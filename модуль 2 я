@@ -1,0 +1,122 @@
+Похоже, вам нужно выполнить экзаменационное задание, связанное с созданием базы данных выпусков журналов на основе предоставленных материалов (фотографий или других файлов), а затем сформировать отчет.
+
+1. Разбор задания
+Вам нужно:
+
+Создать базу данных (БД) выпусков журналов, начиная с 2020 года.
+
+Каждый выпуск должен содержать разделы:
+
+Новости
+
+Статьи
+
+Схемы (в виде гиперссылок)
+
+Склад (количество экземпляров на складе)
+
+Сформировать запрос к БД для получения информации о количестве выпусков на складе.
+
+Построить отчет в виде таблицы на основе запроса.
+
+Также упоминается, что работа будет выполняться в Linux, и, возможно, вам придется обрабатывать фотографии (например, извлекать из них текст).
+
+2. План выполнения
+Шаг 1. Обработка исходных данных (фотографий)
+Если у вас есть фотографии журналов, возможно, вам нужно:
+
+Распознать текст (например, с помощью tesseract-ocr в Linux):
+
+bash
+sudo apt install tesseract-ocr tesseract-ocr-rus  # для русского языка
+tesseract image.jpg output -l rus  # распознавание текста
+Извлечь данные (номера выпусков, статьи, количество на складе).
+
+Шаг 2. Создание базы данных
+Вы можете использовать:
+
+SQLite (легковесная БД, не требует сервера):
+
+bash
+sudo apt install sqlite3
+sqlite3 journals.db  # создание БД
+PostgreSQL/MySQL (если требуется более сложная БД).
+
+Пример структуры таблицы:
+
+sql
+CREATE TABLE journals (
+    id INTEGER PRIMARY KEY,
+    year INTEGER,
+    issue_number INTEGER,
+    news TEXT,
+    articles TEXT,
+    schemes_links TEXT,  -- гиперссылки на схемы
+    stock_quantity INTEGER  -- количество на складе
+);
+Шаг 3. Заполнение БД данными
+Если у вас есть текстовые файлы после OCR, можно загрузить их в БД:
+
+sql
+INSERT INTO journals (year, issue_number, news, articles, schemes_links, stock_quantity)
+VALUES (2020, 1, 'Новость 1', 'Статья 1', 'http://example.com/scheme1', 100);
+Шаг 4. Запрос к БД
+Запрос для получения остатков на складе:
+
+sql
+SELECT year, issue_number, stock_quantity FROM journals WHERE stock_quantity > 0;
+Шаг 5. Генерация отчета
+Вы можете:
+
+Экспортировать данные в CSV:
+
+bash
+sqlite3 -header -csv journals.db "SELECT year, issue_number, stock_quantity FROM journals;" > report.csv
+Создать таблицу в LibreOffice Calc или через gnumeric.
+
+3. Пример выполнения в Linux
+Установите SQLite:
+
+bash
+sudo apt update && sudo apt install sqlite3
+Создайте БД и таблицу:
+
+bash
+sqlite3 journals.db
+sql
+CREATE TABLE journals (
+    id INTEGER PRIMARY KEY,
+    year INTEGER,
+    issue_number INTEGER,
+    news TEXT,
+    articles TEXT,
+    schemes_links TEXT,
+    stock_quantity INTEGER
+);
+Добавьте данные (вручную или из файлов).
+
+Выполните запрос и сохраните отчет:
+
+bash
+sqlite3 -header -csv journals.db "SELECT * FROM journals;" > report.csv
+4. Если исходные данные — это фотографии
+Используйте OCR (Tesseract) для извлечения текста.
+
+Обработайте текст (например, через grep, awk, sed) для структурирования.
+
+Загрузите данные в БД.
+
+Вывод
+Вам нужно:
+
+Извлечь данные из фотографий (если они есть).
+
+Создать SQL-базу (SQLite).
+
+Заполнить её данными.
+
+Написать SQL-запрос для остатков.
+
+Сгенерировать отчет (CSV или таблицу).
+
+Если у вас есть конкретные файлы, можно уточнить шаги!
