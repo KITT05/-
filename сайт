@@ -757,3 +757,312 @@ h2 {
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+СТУУУУУДИЯЯ!!!!!!
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Студия - Чернильный мир</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #181818;
+      color: #f0f0f0;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    header {
+      background: #1f1f1f;
+      padding: 20px 0;
+    }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+    h1 {
+      font-size: 28px;
+      margin: 0;
+    }
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      padding: 0;
+      margin: 0;
+    }
+    .nav-menu a, .auth-links a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: 0.3s;
+      font-size: 16px;
+    }
+    .nav-menu a:hover, .auth-links a:hover {
+      background: #ff4c4c;
+    }
+    .auth-links {
+      font-size: 16px;
+    }
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background: #1f1f1f;
+      font-size: 16px;
+    }
+    
+    /* Стили для страницы студии */
+    .studio-section {
+      background: #2a2a2a;
+      padding: 30px;
+      border-radius: 10px;
+      margin-bottom: 40px;
+      box-shadow: 0 0 10px rgba(255,76,76,0.2);
+    }
+    .studio-section h2 {
+      color: #ff4c4c;
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    .studio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .studio-card {
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .studio-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(255,76,76,0.3);
+    }
+    .studio-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .studio-card-content {
+      padding: 20px;
+    }
+    .studio-card h3 {
+      margin-top: 0;
+      color: #ff4c4c;
+    }
+    .studio-card p {
+      margin-bottom: 15px;
+    }
+    .studio-link {
+      display: inline-block;
+      background: #ff4c4c;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .studio-link:hover {
+      background: #e63c3c;
+    }
+
+    /* Стили для модальных окон */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+    .modal-content {
+      background-color: #2a2a2a;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 8px;
+      color: #fff;
+      position: relative;
+    }
+    .modal-content input, .modal-content button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+    }
+    .modal-content button {
+      background: #ff4c4c;
+      color: white;
+      cursor: pointer;
+    }
+    .modal-content button:hover {
+      background: #e63c3c;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 22px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-container">
+    <h1>Чернильный мир</h1>
+    <ul class="nav-menu">
+      <li><a href="Сайт.html">Главная</a></li>
+      <li><a href="о нас.html">О нас</a></li>
+      <li><a href="услуги.html">Услуги</a></li>
+      <li><a href="#">Портфолио</a></li>
+      <li><a href="#">Контакты</a></li>
+      <li><a href="студия.html">Студия</a></li> <!-- Добавленная ссылка -->
+    </ul>
+    <div class="auth-links">
+      <a href="#" onclick="openModal('loginModal')">Вход</a> |
+      <a href="#" onclick="openModal('registerModal')">Регистрация</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="studio-section">
+    <h2>Наша студия</h2>
+    
+    <div class="studio-grid">
+      <div class="studio-card">
+        <img src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Интерьер студии">
+        <div class="studio-card-content">
+          <h3>Уютная атмосфера</h3>
+          <p>Наша студия создана для вашего комфорта. Чистота, стерильность и приятная атмосфера.</p>
+          <a href="#" class="studio-link">Подробнее</a>
+        </div>
+      </div>
+      
+      <div class="studio-card">
+        <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Оборудование">
+        <div class="studio-card-content">
+          <h3>Профессиональное оборудование</h3>
+          <p>Мы используем только лучшее оборудование и материалы премиум-класса.</p>
+          <a href="#" class="studio-link">Подробнее</a>
+        </div>
+      </div>
+      
+      <div class="studio-card">
+        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Зона ожидания">
+        <div class="studio-card-content">
+          <h3>Комфортная зона ожидания</h3>
+          <p>Пока вы ждете своей очереди, можете расслабиться в нашей уютной зоне ожидания.</p>
+          <a href="#" class="studio-link">Подробнее</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="studio-section">
+    <h2>Галерея студии</h2>
+    
+    <div class="studio-grid">
+      <div class="studio-card">
+        <img src="https://images.unsplash.com/photo-1604357209793-fca5dca89f97?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Рабочее место">
+        <div class="studio-card-content">
+          <h3>Рабочие места</h3>
+          <p>Индивидуальные рабочие места для каждого мастера, оборудованные всем необходимым.</p>
+        </div>
+      </div>
+      
+      <div class="studio-card">
+        <img src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Стерильная зона">
+        <div class="studio-card-content">
+          <h3>Стерильные зоны</h3>
+          <p>Мы строго соблюдаем все нормы стерильности и безопасности.</p>
+        </div>
+      </div>
+      
+      <div class="studio-card">
+        <img src="https://images.unsplash.com/photo-1605106715994-18d3fecffb98?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Выставочная зона">
+        <div class="studio-card-content">
+          <h3>Выставочная зона</h3>
+          <p>Посмотрите примеры работ наших мастеров вживую.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Тату Студия "Чернильный мир"</p>
+</footer>
+
+<!-- Модальное окно входа -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('loginModal')">&times;</span>
+    <h2>Вход</h2>
+    <input type="text" placeholder="Логин">
+    <input type="password" placeholder="Пароль">
+    <button>Войти</button>
+  </div>
+</div>
+
+<!-- Модальное окно регистрации -->
+<div id="registerModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('registerModal')">&times;</span>
+    <h2>Регистрация</h2>
+    <input type="text" placeholder="Имя пользователя">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Пароль">
+    <button>Зарегистрироваться</button>
+  </div>
+</div>
+
+<script>
+  function openModal(id) {
+    document.getElementById(id).style.display = "block";
+  }
+  function closeModal(id) {
+    document.getElementById(id).style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+      event.target.style.display = "none";
+    }
+  };
+</script>
+
+</body>
+</html>
